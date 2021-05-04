@@ -1,0 +1,17 @@
+.breadcrumbs{
+    text-transform: capitalize;
+    text-align: left;
+    padding: 10px;
+}
+
+.breadcrumbsList{
+    list-style: none;
+    display: grid;
+    width: 10%;
+    padding: 5px;
+}
+
+.breadcrumbsListItems{
+    font-size: 1.2rem;
+    border: 2px solid black;
+}
