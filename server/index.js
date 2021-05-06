@@ -1,16 +1,17 @@
+require('dotenv').config();
 const express = require('express');
 const FileSchema = require('./Schema');
 const Path = require('./Path');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const {MongoClient} = require('mongodb');
-require('dotenv').config();
-
+const connectDB = require('./db');
 const app = express();
 
 let dirObjectArray = require('./IterateStructure');
 
-mongoose.connect(process.env.CONNECT_URL, {useNewUrlParser: true, useUnifiedTopology: true,});
+
+connectDB();
 
 
 app.use(express.json());
