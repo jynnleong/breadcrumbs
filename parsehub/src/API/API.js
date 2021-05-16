@@ -1,4 +1,4 @@
-const API_URL = window.location.hosename === 'localhost' ? 'http://localhost:5000' : '';
+const API_URL = 'http://localhost:5001';
 
 export async function getDir(pathway) {
     const res = await fetch(`${API_URL}/path/${pathway}`);

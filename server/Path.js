@@ -1,9 +1,8 @@
 const root = require('./test');
 const express = require('express');
-const FileSchema = require('./Schema');
-const mongoose = require('mongoose');
 require('dotenv').config();
 
+const dirObjectArray = require('./IterateStructure');
 
 const router = express.Router();
 
@@ -18,10 +17,16 @@ router.get('/', async (req,res) => {
 
 router.get('/:pathway', async(req,res) => {
     try{
-        const fileSchema = await FileSchema.findOne({name: `${req.params.pathway}`});
-        if(fileSchema !== null)
+        let file;
+
+        for( var key in dirObjectArray ){
+            if(dirObjectArray[key].name === req.params.pathway){
+                file = dirObjectArray[key];
+            }
+        }
+        if(file !== null)
         {
-            res.json(fileSchema);
+            res.send(file);
         }
         else
         {

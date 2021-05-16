@@ -4,7 +4,6 @@ import './breadcrumb.css';
 function Breadcrumb({name, children, type, setCurrentDir}){
 
     const changeDir = (e) => {
-        console.log(e);
         setCurrentDir(e.target.innerText);
     }
 

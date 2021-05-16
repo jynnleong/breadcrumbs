@@ -1,5 +1,3 @@
-// eslint-disable-next-line
-import logo from './logo.svg';
 import { useState, useEffect } from 'react';
 import { getDir } from './API/API';
 import Breadcrumb from './Breadcrumb';
@@ -44,7 +42,7 @@ function App() {
       <div>
         {
           dirEntries.map((entry,index)=> (
-            (index == dirEntries.length - 1) ? <Breadcrumb key={index} name={entry.name} children={entry.children} type={entry.type} setCurrentDir={setCurrentDir}/> : ""
+            (index === dirEntries.length - 1) ? <Breadcrumb key={index} name={entry.name} children={entry.children} type={entry.type} setCurrentDir={setCurrentDir}/> : ""
           ))
         }
       </div>

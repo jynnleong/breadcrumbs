@@ -1,17 +1,10 @@
 require('dotenv').config();
 const express = require('express');
-const FileSchema = require('./Schema');
 const Path = require('./Path');
 const cors = require('cors');
-const mongoose = require('mongoose');
-const {MongoClient} = require('mongodb');
-const connectDB = require('./db');
 const app = express();
 
 let dirObjectArray = require('./IterateStructure');
-
-
-connectDB();
 
 
 app.use(express.json());
@@ -23,21 +16,7 @@ app.use('/path', Path);
 
 
 app.get('/', (req,res) => {
-    let name = [];
-    dirObjectArray.forEach(async (obj, objIndex) => {
-        try {
-            const file = new FileSchema({
-                name: obj.name,
-                children: obj.children,
-                type: obj.type,
-            });
-
-            await file.save();
-            res.send("Connection good!");
-        }catch(error){
-            res.send(error.message);
-        }
-    });
+    res.send(dirObjectArray);
 });
 
 app.listen(process.env.PORT, () => {
